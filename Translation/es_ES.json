@@ -1,0 +1,18 @@
+{
+    "weekday-mon-abbr": "Lun",
+    "weekday-tue-abbr": "Mar",
+    "weekday-wed-abbr": "Mié",
+    "weekday-thu-abbr": "Jue",
+    "weekday-fri-abbr": "Vie",
+    "weekday-sat-abbr": "Sáb",
+    "weekday-sun-abbr": "Dom",
+    "weekday-mon-letter": "L",
+    "weekday-tue-letter": "M",
+    "weekday-wed-letter": "X",
+    "weekday-thu-letter": "J",
+    "weekday-fri-letter": "V",
+    "weekday-sat-letter": "S",
+    "weekday-sun-letter": "D",
+    "weekdays-workweek": "Lun-Vie",
+    "weekdays-weekend": "Fin de semana"
+}

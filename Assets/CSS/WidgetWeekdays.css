@@ -1,0 +1,15 @@
+/**
+ * This file is part of WidgetWeekdays plugin for FacturaScripts.
+ * Copyright (C) 2026 Jose Antonio Cuello Principal <yopli2000@gmail.com>
+ */
+
+/* badges de la vista de solo lectura: ancho fijo para que queden alineados */
+.fs-weekdays-show .badge {
+    min-width: 1.6rem;
+    font-weight: 600;
+}
+
+/* en pantallas pequeñas los presets caen debajo de los días */
+.fs-weekdays .fs-weekdays-presets {
+    align-self: flex-start;
+}
