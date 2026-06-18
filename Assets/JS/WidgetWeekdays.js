@@ -27,8 +27,25 @@ function fsWeekdaysUpdateHidden(container) {
     }
 }
 
+// En los filtros de listado el contenedor lleva data-autosubmit: al cambiar un
+// día se envía el formulario para aplicar el filtro (igual que el resto de filtros).
+function fsWeekdaysAutosubmit(container) {
+    if (!container || !container.dataset.autosubmit) {
+        return;
+    }
+    const form = container.closest('form');
+    if (form) {
+        if (typeof form.onsubmit === 'function') {
+            form.onsubmit();
+        }
+        form.submit();
+    }
+}
+
 document.addEventListener('change', function (event) {
     if (event.target.classList.contains('fs-weekdays-day')) {
-        fsWeekdaysUpdateHidden(event.target.closest('.fs-weekdays'));
+        const container = event.target.closest('.fs-weekdays');
+        fsWeekdaysUpdateHidden(container);
+        fsWeekdaysAutosubmit(container);
     }
 });

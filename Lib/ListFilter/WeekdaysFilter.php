@@ -55,6 +55,17 @@ class WeekdaysFilter extends BaseFilter
     ];
 
     /**
+     * @param string $key
+     * @param string $field
+     * @param string $label
+     */
+    public function __construct(string $key, string $field = '', string $label = '')
+    {
+        parent::__construct($key, $field, $label);
+        $this->autosubmit = true;
+    }
+
+    /**
      * Añade una condición al where por cada día seleccionado.
      * Para comprobar que el carácter de la posición del día vale '1' se usa un
      * patrón LIKE con guiones bajos (un carácter cualquiera por posición), p.ej.
@@ -84,6 +95,7 @@ class WeekdaysFilter extends BaseFilter
     public function render(): string
     {
         $selected = Weekdays::toArray($this->value);
+        $autosubmit = $this->autosubmit ? ' data-autosubmit="1"' : '';
 
         $daysHtml = '';
         foreach (static::$abbr as $i => $key) {
@@ -96,8 +108,8 @@ class WeekdaysFilter extends BaseFilter
 
         return '<div class="col-sm-auto">'
             . '<div class="mb-3">'
-            . '<div class="small mb-1">' . Tools::trans($this->label) . '</div>'
-            . '<div class="fs-weekdays" data-field="' . $this->field . '">'
+            . '<div class="fs-weekdays" data-field="' . $this->field . '"' . $autosubmit
+            . ' title="' . Tools::trans($this->label) . '">'
             . '<input type="hidden" name="' . $this->name() . '" value="' . implode('', $selected) . '"/>'
             . '<div class="btn-group btn-group-sm flex-wrap fs-weekdays-days" role="group">' . $daysHtml . '</div>'
             . '</div>'

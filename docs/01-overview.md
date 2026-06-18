@@ -1,4 +1,4 @@
-# Presentación: WidgetWeekdays
+# Presentación de WidgetWeekdays
 
 **WidgetWeekdays** añade a FacturaScripts dos tipos de widget, `weekdays` y `weekdaysfull`, para seleccionar los días de la semana en cualquier combinación y guardarlos en un único campo `varchar(7)`.
 
