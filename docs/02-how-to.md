@@ -34,17 +34,25 @@ Añade una columna `varchar(7)` a la tabla de tu modelo, en el XML de `Table/`. 
 
 ## 3. Usar el widget en una vista XML
 
-En el `XMLView/` de tu controlador, define la columna usando `type="weekdays"` y apuntando con `fieldname` al campo de la tabla:
+En el `XMLView/` de tu controlador, define la columna apuntando con `fieldname` al campo de la tabla. Tienes dos tipos a elegir:
+
+- **`type="weekdays"`** (base): solo los siete botones de día.
+- **`type="weekdaysfull"`**: lo anterior más botones de selección rápida. Hereda del base.
 
 ```xml
 <column name="weekdays" numcolumns="12" order="100">
     <widget type="weekdays" fieldname="weekdays"/>
 </column>
+
+<!-- o, con botones de selección rápida: -->
+<column name="weekdays" numcolumns="12" order="100">
+    <widget type="weekdaysfull" fieldname="weekdays"/>
+</column>
 ```
 
 El widget se encarga de todo:
 
-- **En modo edición** muestra un botón por día (Lun, Mar, Mié…) más botones de selección rápida: **laborables**, **fin de semana**, **todos** y **ninguno**.
+- **En modo edición** muestra un botón por día (Lun, Mar, Mié…). Con `weekdaysfull` añade además botones de selección rápida: **laborables**, **todos** y **ninguno**.
 - **En modo lectura / listados** muestra una fila de etiquetas (L M X J V S D) resaltando los días activos.
 - **En exportaciones y PDF** muestra los nombres de los días seleccionados separados por comas.
 

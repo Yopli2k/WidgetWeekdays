@@ -1,8 +1,12 @@
 # WidgetWeekdays
 
-Plugin para FacturaScripts que añade un nuevo widget (`type="weekdays"`) para seleccionar
-los días de la semana en cualquier combinación, pensado para acciones que deben ejecutarse
-en determinados días (tareas recurrentes, horarios, etc.).
+Plugin para FacturaScripts que añade widgets para seleccionar los días de la semana en
+cualquier combinación, pensado para acciones que deben ejecutarse en determinados días
+(tareas recurrentes, horarios, etc.). Incluye dos widgets:
+
+- **`type="weekdays"`** (base): solo los siete botones de día (lunes → domingo).
+- **`type="weekdaysfull"`**: lo anterior más botones de selección rápida (**Lun-Vie**,
+  **Todos** y **Ninguno**). Hereda del widget base.
 
 ## Almacenamiento
 
@@ -26,18 +30,23 @@ Para saber el índice de una fecha basta con `DateTimeTools::dayOfWeek($fecha) -
 ## Uso en una vista XML
 
 1. Define el campo en el `Table/` del modelo como `varchar` de longitud 7.
-2. En el `XMLView/` usa el widget con `type="weekdays"`:
+2. En el `XMLView/` usa el widget con `type="weekdays"` (solo días) o `type="weekdaysfull"`
+   (días + presets):
 
 ```xml
 <column name="days" order="100">
     <widget type="weekdays" fieldname="days"/>
 </column>
+
+<column name="days" order="100">
+    <widget type="weekdaysfull" fieldname="days"/>
+</column>
 ```
 
 ## Selección visual
 
-- Botones tipo *toggle* de Bootstrap 5 (`.btn-check`), uno por día.
-- Botones de selección rápida: **Lun-Vie**, **Fin de semana**, **Todos** y **Ninguno**.
+- Botones tipo *toggle* de Bootstrap 5 (`.btn-check`), uno por día (ambos widgets).
+- Botones de selección rápida (solo `weekdaysfull`): **Lun-Vie**, **Todos** y **Ninguno**.
 
 Toda la lógica de cliente es JavaScript vanilla; un único campo oculto con la cadena de
 7 caracteres es lo que se envía en el formulario.

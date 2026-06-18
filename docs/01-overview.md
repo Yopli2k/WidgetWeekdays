@@ -1,12 +1,12 @@
 # Presentación: WidgetWeekdays
 
-**WidgetWeekdays** añade a FacturaScripts un nuevo tipo de widget, `weekdays`, para seleccionar los días de la semana en cualquier combinación y guardarlos en un único campo `varchar(7)`.
+**WidgetWeekdays** añade a FacturaScripts dos tipos de widget, `weekdays` y `weekdaysfull`, para seleccionar los días de la semana en cualquier combinación y guardarlos en un único campo `varchar(7)`.
 
 Está pensado para cualquier funcionalidad que dependa de "en qué días ocurre algo": tareas recurrentes, horarios de apertura, días de reparto, turnos, recordatorios, etc. En lugar de crear siete campos booleanos (uno por día), guardas toda la selección en una sola columna y manipulas el valor con una librería de utilidades incluida en el plugin.
 
 ## Qué aporta
 
-- Un **widget visual** (`type="weekdays"`) con un botón por día y botones de selección rápida (laborables, fin de semana, todos, ninguno).
+- Dos **widgets visuales** con un botón por día: `type="weekdays"` (base, solo los días) y `type="weekdaysfull"` (hereda del base y añade botones de selección rápida: laborables, todos y ninguno).
 - Una **clase de utilidades** (`Weekdays`) con métodos estáticos para leer y manipular el valor desde tu código PHP sin pelearte con la cadena de caracteres.
 - Un **filtro para listados** (`WeekdaysFilter`) para filtrar un `ListView` por los días seleccionados.
 

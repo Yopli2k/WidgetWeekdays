@@ -29,6 +29,10 @@ use FacturaScripts\Dinamic\Lib\Weekdays;
  * Widget to select the days of the week (any combination) and store them
  * into a varchar(7) field as a string of 1 (selected) and 0 (not selected).
  *
+ * This is the base widget: it only renders the seven day toggles (monday →
+ * sunday). The quick-select presets (workweek, all, none) are provided by the
+ * child widget WidgetWeekdaysfull (type="weekdaysfull").
+ *
  * The position of each character follows the ISO 8601 order used by the rest
  * of FacturaScripts (DateTimeTools::dayOfWeek):
  *   index 0 = Monday (ISO 1) ... index 6 = Sunday (ISO 7)
@@ -120,34 +124,22 @@ class WidgetWeekdays extends BaseWidget
                 . Tools::trans($day['abbr']) . '</label>';
         }
 
-        $presetsHtml = '';
-        if (false === $this->readonly()) {
-            $presetsHtml = '<div class="btn-group btn-group-sm ms-md-2 mt-2 mt-md-0 fs-weekdays-presets" role="group">'
-                . $this->presetButton('workweek', Tools::trans('weekdays-workweek'))
-                . $this->presetButton('weekend', Tools::trans('weekdays-weekend'))
-                . $this->presetButton('all', Tools::trans('all'))
-                . $this->presetButton('none', Tools::trans('none'))
-                . '</div>';
-        }
-
         return '<div class="fs-weekdays d-md-flex align-items-center flex-wrap" data-field="' . $this->fieldname . '">'
             . '<input type="hidden" name="' . $this->fieldname . '" value="' . implode('', $selected) . '"/>'
             . '<div class="btn-group btn-group-sm fs-weekdays-days" role="group">' . $daysHtml . '</div>'
-            . $presetsHtml
+            . $this->presetsHtml()
             . '</div>';
     }
 
     /**
-     * Botón de selección rápida (preset).
+     * HTML de los botones de selección rápida (presets). En el widget base no
+     * hay presets; el widget hijo (WidgetWeekdaysfull) sobrescribe este método.
      *
-     * @param string $preset
-     * @param string $label
      * @return string
      */
-    protected function presetButton(string $preset, string $label): string
+    protected function presetsHtml(): string
     {
-        return '<button type="button" class="btn btn-outline-secondary fs-weekdays-preset"'
-            . ' data-preset="' . $preset . '">' . $label . '</button>';
+        return '';
     }
 
     /**
