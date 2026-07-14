@@ -126,7 +126,7 @@ class WidgetWeekdays extends BaseWidget
 
         return '<div class="fs-weekdays d-md-flex align-items-center flex-wrap" data-field="' . $this->fieldname . '">'
             . '<input type="hidden" name="' . $this->fieldname . '" value="' . implode('', $selected) . '"/>'
-            . '<div class="btn-group btn-group-sm fs-weekdays-days" role="group">' . $daysHtml . '</div>'
+            . '<div class="btn-group fs-weekdays-days" role="group">' . $daysHtml . '</div>'
             . $this->presetsHtml()
             . '</div>';
     }

@@ -68,8 +68,8 @@ class WidgetWeekdaysfull extends WidgetWeekdays
             return '';
         }
 
-        return '<div class="btn-group btn-group-sm ms-md-2 mt-2 mt-md-0 fs-weekdays-presets" role="group">'
-            . $this->presetButton('workweek', Tools::trans('weekdays-workweek'))
+        return '<div class="btn-group ms-md-2 mt-2 mt-md-0 fs-weekdays-presets" role="group">'
+            . $this->presetButton('workweek', Tools::trans('workweek'))
             . $this->presetButton('all', Tools::trans('all'))
             . $this->presetButton('none', Tools::trans('none'))
             . '</div>';
