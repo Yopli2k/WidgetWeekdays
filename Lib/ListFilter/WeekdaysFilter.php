@@ -19,9 +19,9 @@
  */
 namespace FacturaScripts\Plugins\WidgetWeekdays\Lib\ListFilter;
 
-use FacturaScripts\Core\Base\DataBase\DataBaseWhere;
 use FacturaScripts\Core\Lib\ListFilter\BaseFilter;
 use FacturaScripts\Core\Tools;
+use FacturaScripts\Core\Where;
 use FacturaScripts\Dinamic\Lib\AssetManager;
 use FacturaScripts\Dinamic\Lib\Weekdays;
 
@@ -70,7 +70,7 @@ class WeekdaysFilter extends BaseFilter
      * Para comprobar que el carácter de la posición del día vale '1' se usa un
      * patrón LIKE con guiones bajos (un carácter cualquiera por posición), p.ej.
      * el jueves (índice 3) genera el patrón '___1%'. El '%' final es necesario
-     * para que DataBaseWhere use el patrón tal cual y no lo envuelva en '%...%'.
+     * para que Where use el patrón tal cual y no lo envuelva en '%...%'.
      *
      * @param array $where
      * @return bool
@@ -83,7 +83,7 @@ class WeekdaysFilter extends BaseFilter
 
         foreach (Weekdays::selectedIndexes($this->value) as $index) {
             $pattern = str_repeat('_', $index) . '1%';
-            $where[] = new DataBaseWhere($this->field, $pattern, 'LIKE');
+            $where[] = Where::like($this->field, $pattern);
         }
 
         return true;
