@@ -73,10 +73,8 @@ El filtro muestra los 7 días como botones y devuelve los registros que tienen a
 requiere assets adicionales.
 
 ## Más información
-<ul>
-    <li>General info: https://www.facturascripts.com</li>
-    <li>Plugin info:  https://www.facturascripts.com/plugins/widgetrichtext</li>
-</ul>
+- [Información general](https://www.facturascripts.com)
+- [Información del plugin](https://www.facturascripts.com/plugins/widgetrichtext)
 
 
 ## Documentación / Issues / Feedback
